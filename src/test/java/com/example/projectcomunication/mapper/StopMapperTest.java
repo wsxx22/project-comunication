@@ -19,22 +19,22 @@ public class StopMapperTest {
 
     @Test
     public void stopDtoShouldReturnStopEntity (){
-
-        //given
-        StopDto stopDto = new StopDto("Z50", "32.002", "54.040", 1L);
-        Optional<Stop> optionalStop =
-                Optional.of(new Stop("Z50", "32.002", "54.040", new TransportType("bus")));
-//        Stop stop = new Stop("Z50", "32.002", "54.040", transportType);
-        StopMapper stopMapper = mock(StopMapper.class);
-        given(stopMapper.dtoToEntity(stopDto)).willReturn(optionalStop);
-
-        //when
-        Optional<Stop> optionalStop1 = stopMapper.dtoToEntity(stopDto);
-
-        //then
-        verify(stopMapper).dtoToEntity(stopDto);
-//        assertThat(optionalStop1.get(), isNotNull());
-
+//
+//        //given
+//        StopDto stopDto = new StopDto("Z50", "32.002", "54.040", 1L);
+//        Optional<Stop> optionalStop =
+//                Optional.of(new Stop("Z50", "32.002", "54.040", new TransportType("bus")));
+////        Stop stop = new Stop("Z50", "32.002", "54.040", transportType);
+//        StopMapper stopMapper = mock(StopMapper.class);
+//        given(stopMapper.dtoToEntity(stopDto)).willReturn(optionalStop);
+//
+//        //when
+//        Optional<Stop> optionalStop1 = stopMapper.dtoToEntity(stopDto);
+//
+//        //then
+//        verify(stopMapper).dtoToEntity(stopDto);
+////        assertThat(optionalStop1.get(), isNotNull());
+//
     }
 
 }

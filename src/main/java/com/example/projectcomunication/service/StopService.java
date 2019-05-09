@@ -16,23 +16,23 @@ import java.util.List;
 public class StopService {
 
     private StopRepository stopRepository;
-    private StopMapper stopMapper;
+
 
     @Autowired
-    public StopService(StopRepository stopRepository, StopMapper stopMapper) {
+    public StopService(StopRepository stopRepository) {
         this.stopRepository = stopRepository;
-        this.stopMapper = stopMapper;
     }
 
-    public List<StopDto> findAll(StopSpecification stopSpecification, Pageable pageable) {
-        return stopMapper.toDtoList(stopRepository.findAll(stopSpecification, pageable).getContent());
+    public List<Stop> findAll(StopSpecification stopSpecification, Pageable pageable) {
+        return stopRepository.findAll(stopSpecification, pageable).getContent();
     }
 
-    public StopDto addStop (StopDto stopDto) {
+    public Stop addStop (Stop stop) {
+        return stopRepository.save(stop);
+    }
 
-        Stop stop = stopMapper.dtoToEntity(stopDto).orElseThrow(() -> new StopNotExists());
-        stopRepository.save(stop);
-        return stopMapper.toDto(stop);
+    public Stop findById (Long id) {
+        return stopRepository.findById(id).orElseThrow(() -> new StopNotExists());
     }
 
 }

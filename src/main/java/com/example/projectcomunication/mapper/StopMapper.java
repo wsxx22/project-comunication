@@ -19,26 +19,20 @@ public abstract class StopMapper {
     @Autowired
     private TransportTypeRepository transportTypeRepository;
 
-//    @Autowired
-//    public StopMapper(TransportTypeRepository transportTypeRepository) {
-//        this.transportTypeRepository = transportTypeRepository;
-//    }
-
     @Mapping(target = "transportTypeId", source = "transportType.id")
     public abstract StopDto toDto (Stop stop);
 
     public abstract List<StopDto> toDtoList (List<Stop> stopList);
 
-    public Optional<Stop> dtoToEntity (StopDto stopDto) {
+    public Stop dtoToEntity (StopDto stopDto) {
 
-        Stop stop = new Stop(
+        return new Stop(
                 stopDto.getName(),
                 stopDto.getLatitude(),
                 stopDto.getLongitude(),
                 transportTypeRepository.findById(stopDto.getTransportTypeId()).orElseThrow(() -> new TransportTypeNotFound("Transport not found"))
         );
 
-        return Optional.of(stop);
     }
 
 }

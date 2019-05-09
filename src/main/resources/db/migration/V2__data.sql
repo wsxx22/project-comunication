@@ -58,10 +58,10 @@ insert into days_of_week (day) values ('MONDAY');
 insert into days_of_week (day) values ('TUESDAY');
 insert into days_of_week (day) values ('WEDNESDAY');
 
-insert into stops_schedule (id_stop, id_line, id_day_of_week, time) values (1, 2, 1, current_time);
-insert into stops_schedule (id_stop, id_line, id_day_of_week, time) values (2, 1, 2, current_time);
-insert into stops_schedule (id_stop, id_line, id_day_of_week, time) values (2, 3, 3, current_time);
+insert into stop_lines (id_stop, id_line, id_day_of_week, time) values (1, 2, 1, current_time);
+insert into stop_lines (id_stop, id_line, id_day_of_week, time) values (2, 1, 2, current_time);
+insert into stop_lines (id_stop, id_line, id_day_of_week, time) values (2, 3, 3, current_time);
 
-insert into lines_schedule (id_line, id_end_stop, position, id_stop) values (2, 1, 1, 1);
-insert into lines_schedule (id_line, id_end_stop, position, id_stop) values (2, 1, 2, 2);
-insert into lines_schedule (id_line, id_end_stop, position, id_stop) values (2, 1, 3, 3);
+insert into lines_stops (id_line, id_end_stop, position, id_stop) values (2, 1, 1, 1);
+insert into lines_stops (id_line, id_end_stop, position, id_stop) values (2, 1, 2, 2);
+insert into lines_stops (id_line, id_end_stop, position, id_stop) values (2, 1, 3, 3);

@@ -35,7 +35,7 @@ create table stops
 (
     id                bigint primary key auto_increment,
     id_transport_type bigint      not null,
-    name              varchar(20) not null,
+    name              varchar(20) not null unique ,
     latitude          varchar(20) not null,
     longitude         varchar(20) not null,
 
@@ -67,9 +67,8 @@ create table days_of_week
     day varchar(20) not null
 );
 
-create table stops_schedule
+create table stop_lines
 (
-    id             bigint primary key auto_increment,
     id_stop        bigint not null,
     id_line        bigint not null,
     id_day_of_week bigint not null,
@@ -77,10 +76,11 @@ create table stops_schedule
 
     foreign key (id_stop) references stops (id),
     foreign key (id_line) references lines (id),
-    foreign key (id_day_of_week) references days_of_week (id)
+    foreign key (id_day_of_week) references days_of_week (id),
+    primary key (id_stop, id_line)
 );
 
-create table lines_schedule
+create table lines_stops
 (
     id          bigint primary key auto_increment,
     id_line     bigint not null,
