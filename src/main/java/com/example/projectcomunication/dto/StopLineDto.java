@@ -11,9 +11,9 @@ import java.time.LocalTime;
 @Data
 public class StopLineDto {
 
-    private Long stopId;
+    private String stop;
 
-    private Long lineId;
+    private String line;
 
     private String day;
 

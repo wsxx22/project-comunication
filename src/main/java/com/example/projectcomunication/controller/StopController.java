@@ -2,6 +2,7 @@ package com.example.projectcomunication.controller;
 
 import com.example.projectcomunication.dto.StopDto;
 import com.example.projectcomunication.dto.StopLineDto;
+import com.example.projectcomunication.entity.Stop;
 import com.example.projectcomunication.entity.StopLine;
 import com.example.projectcomunication.mapper.StopLineMapper;
 import com.example.projectcomunication.mapper.StopMapper;
@@ -34,17 +35,22 @@ public class StopController {
     }
 
     @GetMapping
-    public String findAll(StopSpecification stopSpecification, Pageable pageable) {
-        //return stopService.findAll(stopSpecification, pageable);
-
-        System.out.println(stopService.findById(2L).getStopLines().size());
-
-        return "";
+    public List<StopDto> findAll(StopSpecification stopSpecification, Pageable pageable) {
+        return stopMapper.toDtoList(stopService.findAll(stopSpecification, pageable));
+//
+//        System.out.println(stopService.findById(2L).getStopLines().size());
+//
+//        return "";
     }
 
     @GetMapping("/{id}/lines")
     public List<StopLineDto> findStopLines(@PathVariable("id") Long id) {
         return stopLineMapper.toDto(stopService.findById(id).getStopLines());
+    }
+
+    @GetMapping("/{id}")
+    public StopDto findById(@PathVariable Long id) {
+        return stopMapper.toDto(stopService.findById(id));
     }
 
 }

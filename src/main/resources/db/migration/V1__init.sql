@@ -82,7 +82,6 @@ create table stop_lines
 
 create table lines_stops
 (
-    id          bigint primary key auto_increment,
     id_line     bigint not null,
     id_end_stop bigint not null,
     position    int    not null,

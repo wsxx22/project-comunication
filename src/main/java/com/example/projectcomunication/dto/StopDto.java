@@ -9,12 +9,14 @@ import lombok.NoArgsConstructor;
 @Data
 public class StopDto {
 
+    private Long id;
+
     private String name;
 
     private String latitude;
 
     private String longitude;
 
-    private Long transportTypeId;
+    private String transportTypeName;
 
 }

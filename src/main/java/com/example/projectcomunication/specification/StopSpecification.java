@@ -7,7 +7,7 @@ import net.kaczmarzyk.spring.data.jpa.web.annotation.Spec;
 import org.springframework.data.jpa.domain.Specification;
 
 @And({
-    @Spec(path = "transportType.name", params = "transportType", spec = LikeIgnoreCase.class)
+    @Spec(path = "transportTypeName.name", params = "transportTypeName", spec = LikeIgnoreCase.class)
 })
 public interface StopSpecification extends Specification<Stop> {
 

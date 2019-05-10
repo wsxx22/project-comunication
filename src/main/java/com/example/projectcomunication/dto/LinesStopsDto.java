@@ -4,13 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class VehicleDto {
+public class LinesStopsDto {
 
-    private String name;
+    private LineDto line;
 
-    private String transportTypeName;
+    private String endStop;
+
+    private int position;
+
+    private StopDto stop;
 
 }

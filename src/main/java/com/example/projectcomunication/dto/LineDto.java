@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 public class LineDto {
 
+    private Long id;
+
     private String name;
 
-    private Long transportTypeId;
+    private String transportTypeName;
 
 }

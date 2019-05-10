@@ -5,11 +5,15 @@ import com.example.projectcomunication.entity.Line;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring")
 public interface LineMapper {
 
-    @Mapping(target = "transportTypeId", source = "transportType.id")
+    @Mapping(target = "transportTypeName", source = "transportType.name")
     LineDto toDto (Line line);
+
+    List<LineDto> toDtoList (List<Line> lineList);
 
 
 

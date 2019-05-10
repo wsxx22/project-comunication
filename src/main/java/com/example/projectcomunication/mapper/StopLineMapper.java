@@ -12,8 +12,8 @@ import java.util.List;
 public interface StopLineMapper {
 
     @Mappings({
-            @Mapping(target = "stopId", source = "stop.id"),
-            @Mapping(target = "lineId", source = "line.id"),
+            @Mapping(target = "stop", source = "stop.name"),
+            @Mapping(target = "line", source = "line.name"),
             @Mapping(target = "day", source = "day.day"),
     })
     StopLineDto toDto (StopLine stopLine);

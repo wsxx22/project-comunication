@@ -3,38 +3,54 @@ package com.example.projectcomunication.mapper;
 import com.example.projectcomunication.dto.StopDto;
 import com.example.projectcomunication.entity.Stop;
 import com.example.projectcomunication.entity.TransportType;
-import com.example.projectcomunication.repository.TransportTypeRepository;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.Optional;
-
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-import static org.hamcrest.Matchers.*;
-import static org.mockito.ArgumentMatchers.isNotNull;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
+@RunWith(MockitoJUnitRunner.class)
 public class StopMapperTest {
+
+    @Mock
+    StopMapper stopMapper;
 
     @Test
     public void stopDtoShouldReturnStopEntity (){
-//
-//        //given
-//        StopDto stopDto = new StopDto("Z50", "32.002", "54.040", 1L);
-//        Optional<Stop> optionalStop =
-//                Optional.of(new Stop("Z50", "32.002", "54.040", new TransportType("bus")));
-////        Stop stop = new Stop("Z50", "32.002", "54.040", transportType);
-//        StopMapper stopMapper = mock(StopMapper.class);
-//        given(stopMapper.dtoToEntity(stopDto)).willReturn(optionalStop);
-//
-//        //when
-//        Optional<Stop> optionalStop1 = stopMapper.dtoToEntity(stopDto);
-//
-//        //then
+
+        //given
+        StopDto stopDto = new StopDto(1L,"Z50", "32.002", "54.040", "bus");
+        Stop stopReturnObject = new Stop("Z50", "32.002", "54.040", new TransportType("bus"));
+
+        Mockito.when(stopMapper.dtoToEntity(stopDto)).thenReturn(stopReturnObject);
+        //Mockito.when(stopMapper.count(123)).thenReturn(200);
+
+//        given(stopMapper.dtoToEntity(stopDto)).willReturn(stopReturnObject);
+
+        //when
+        Stop stop = stopMapper.dtoToEntity(stopDto);
+        //int count = stopMapper.count(123);
+
+        //then
+        //assertThat(stop, isNotNull());
+        //assertEquals(stop, notNull());
 //        verify(stopMapper).dtoToEntity(stopDto);
-////        assertThat(optionalStop1.get(), isNotNull());
-//
+
+        assertThat(stop);
+        Mockito.verify(stopMapper).dtoToEntity(stopDto);
+
+        System.out.println(stop.getName());
+
+//        Assert.assertEquals(200, count);
+//        Mockito.verify(stopMapper).count(123);
+
     }
 
 }
