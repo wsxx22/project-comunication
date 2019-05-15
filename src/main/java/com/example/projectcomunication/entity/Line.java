@@ -3,6 +3,7 @@ package com.example.projectcomunication.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.kaczmarzyk.spring.data.jpa.web.annotation.Join;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,7 +22,9 @@ public class Line extends AbstractEntity{
     @JoinColumn(name = "id_transport_type")
     private TransportType transportType;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    List<LinesStops> linesStops = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "line")
+    @OrderBy("position")
+    //@JoinColumn(name = "id_line")
+    private List<LineStop> linesStops = new ArrayList<>();
 
 }

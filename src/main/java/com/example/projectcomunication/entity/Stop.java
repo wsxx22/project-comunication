@@ -26,9 +26,9 @@ public class Stop extends AbstractEntity {
     @JoinColumn(name = "id_transport_type")
     private TransportType transportType;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_stop")
-    List<StopLine> stopLines = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "stop")
+    //@JoinColumn(name = "id_stop")
+    private List<StopLine> stopLines = new ArrayList<>();
 
     public Stop(String name, String latitude, String longitude, TransportType transportType) {
         this.name = name;

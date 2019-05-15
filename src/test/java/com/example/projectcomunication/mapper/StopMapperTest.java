@@ -10,8 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -39,14 +38,12 @@ public class StopMapperTest {
         //int count = stopMapper.count(123);
 
         //then
-        //assertThat(stop, isNotNull());
-        //assertEquals(stop, notNull());
-//        verify(stopMapper).dtoToEntity(stopDto);
+        assertNotNull(stop);
+        verify(stopMapper).dtoToEntity(stopDto);
 
-        assertThat(stop);
-        Mockito.verify(stopMapper).dtoToEntity(stopDto);
+//        Mockito.verify(stopMapper).dtoToEntity(stopDto);
 
-        System.out.println(stop.getName());
+//        System.out.println(stop.getName());
 
 //        Assert.assertEquals(200, count);
 //        Mockito.verify(stopMapper).count(123);

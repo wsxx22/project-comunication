@@ -15,14 +15,17 @@ import java.time.LocalTime;
 @Table(name = "stop_lines")
 public class StopLine implements Serializable {
 
-    @Id
+    @EmbeddedId
+    private StopLineId id;
+
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name = "id_stop")
+    //@JoinColumn(name = "id_stop")
+    @MapsId("idStop")
     private Stop stop;
 
-    @Id
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    @JoinColumn(name =  "id_line")
+    //@JoinColumn(name =  "id_line")
+    @MapsId("idLine")
     private Line line;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
@@ -31,4 +34,12 @@ public class StopLine implements Serializable {
 
     private LocalTime time;
 
+    public StopLine(Stop stop, Line line, Day day, LocalTime time) {
+        this.stop = stop;
+        this.line = line;
+        this.day = day;
+        this.time = time;
+
+        id = new StopLineId(stop.getId(), line.getId());
+    }
 }

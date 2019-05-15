@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 public class LinesStopsDto {
 
-    private LineDto line;
+    private String line;
 
     private String endStop;
 
     private int position;
 
-    private StopDto stop;
+    private String stop;
 
 }

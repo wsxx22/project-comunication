@@ -6,13 +6,16 @@ import com.example.projectcomunication.entity.Stop;
 import com.example.projectcomunication.entity.StopLine;
 import com.example.projectcomunication.mapper.StopLineMapper;
 import com.example.projectcomunication.mapper.StopMapper;
+import com.example.projectcomunication.repository.StopLineRepository;
 import com.example.projectcomunication.service.StopService;
+import com.example.projectcomunication.specification.StopLineSpecification;
 import com.example.projectcomunication.specification.StopSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/stops")
@@ -21,6 +24,9 @@ public class StopController {
     private StopService stopService;
     private StopMapper stopMapper;
     private StopLineMapper stopLineMapper;
+
+    @Autowired
+    private StopLineRepository stopLineRepository;
 
     @Autowired
     public StopController(StopService stopService, StopMapper stopMapper, StopLineMapper stopLineMapper) {
@@ -44,8 +50,8 @@ public class StopController {
     }
 
     @GetMapping("/{id}/lines")
-    public List<StopLineDto> findStopLines(@PathVariable("id") Long id) {
-        return stopLineMapper.toDto(stopService.findById(id).getStopLines());
+    public List<StopLineDto> findStopLines(@PathVariable("id") Long id, StopLineSpecification stopLineSpecification) {
+        return stopLineMapper.toDto(stopLineRepository.findAll(stopLineSpecification).stream().filter(s -> s.getStop().getId().equals(id)).collect(Collectors.toList()));
     }
 
     @GetMapping("/{id}")

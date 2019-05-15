@@ -62,6 +62,6 @@ insert into stop_lines (id_stop, id_line, id_day_of_week, time) values (1, 2, 1,
 insert into stop_lines (id_stop, id_line, id_day_of_week, time) values (2, 1, 2, current_time);
 insert into stop_lines (id_stop, id_line, id_day_of_week, time) values (2, 3, 3, current_time);
 
-insert into lines_stops (id_line, id_end_stop, position, id_stop) values (2, 1, 1, 1);
-insert into lines_stops (id_line, id_end_stop, position, id_stop) values (2, 1, 2, 2);
-insert into lines_stops (id_line, id_end_stop, position, id_stop) values (2, 1, 3, 3);
+insert into lines_stops (id_line, id_end_stop, position, id_stop) values (2, 1, 2, 1);
+insert into lines_stops (id_line, id_end_stop, position, id_stop) values (2, 1, 3, 2);
+insert into lines_stops (id_line, id_end_stop, position, id_stop) values (2, 1, 1, 3);

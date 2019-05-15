@@ -7,6 +7,8 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.NullValueMappingStrategy;
 
+import java.util.List;
+
 @Mapper(componentModel = "spring", uses = StopMapper.class, nullValueMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
 public interface ScheduleMapper {
 
@@ -19,4 +21,5 @@ public interface ScheduleMapper {
     })
     ScheduleDto toDto (Schedule schedule);
 
+    List<ScheduleDto> toDtoList (List<Schedule> schedules);
 }
